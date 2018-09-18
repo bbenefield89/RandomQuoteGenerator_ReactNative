@@ -4,8 +4,8 @@ import { View, Text } from 'react-native'
 const Quote = props => {
   return (
     <View>
-      <Text>{ props.quoteBody }</Text>
-      <Text>{ props.quoteAuthor }</Text>
+      <Text>{ props.quote }</Text>
+      <Text>{ props.author }</Text>
     </View>
   );
 }
