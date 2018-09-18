@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-import { Button, View, Text } from 'react-native'
+import { Button, Linking, View, Text } from 'react-native'
 
 import Quote from './modules/Quote'
 import Anchor from '../misc/Anchor'
@@ -30,15 +30,18 @@ class QuoteContainer extends Component {
         const randomQuote       = quotes[ rand ]
         const { quote, author } = randomQuote
         const quoteData         = { quote, author }
+        let tweetURL          = this.state.tweetURL
+
+        tweetURL += `"${ quote }" ${ author } #quote`
         
-        this.setState({ quoteData })
+        this.setState({ quoteData, tweetURL })
       })
       .catch(err => console.log(err))
   }
   
   // openURL
-  openURL = url => {
-    Linking.openURL('https://www.google.com')
+  openURL = () => {
+    Linking.openURL(this.state.tweetURL)
   }
 
   // componentDidMount
