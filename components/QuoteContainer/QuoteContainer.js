@@ -14,7 +14,8 @@ class QuoteContainer extends Component {
         quote: '',
         author: ''
       },
-      tweetURL: 'https://twitter.com/intent/tweet?hashtags=quotes&text='
+      tweetURL: '',
+      baseURL: 'https://twitter.com/intent/tweet?hashtags=quotes&text='
     }
   }
 
@@ -30,8 +31,8 @@ class QuoteContainer extends Component {
         const randomQuote       = quotes[ rand ]
         const { quote, author } = randomQuote
         const quoteData         = { quote, author }
-        let tweetURL          = this.state.tweetURL
 
+        let tweetURL = this.state.baseURL
         tweetURL += `"${ quote }" ${ author } #quote`
         
         this.setState({ quoteData, tweetURL })
