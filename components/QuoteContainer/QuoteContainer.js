@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import styled from 'styled-components'
 
-import { Button, Linking, View, Text } from 'react-native'
+import { Button, Linking, StyleSheet, View, Text } from 'react-native'
 
 import Quote from './modules/Quote'
-import Anchor from '../misc/Anchor'
+
+const StyledView = styled(View)`
+  background: #fefefe;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+`
+
+const TwitterButtonView = styled(View)`
+  margin-bottom: 22px;
+  width: auto;
+`
 
 class QuoteContainer extends Component {
   constructor(props) {
@@ -53,22 +66,25 @@ class QuoteContainer extends Component {
   // render
   render() { 
     return (
-      <View>
+      <StyledView>
         <Quote
           quote={ this.state.quoteData.quote }
           author={ this.state.quoteData.author }
         />
 
-        <Button
-          onPress={ this.openURL }
-          title='Twitter'
-        />
+
+        <TwitterButtonView>
+          <Button
+            onPress={ this.openURL }
+            title='Tweet quote'
+          />
+        </TwitterButtonView>
         
         <Button
           onPress={ this.getRandomQuote }
           title='Generate new quote'
         />
-      </View>
+      </StyledView>
     );
   }
 }
